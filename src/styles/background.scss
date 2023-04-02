@@ -1,0 +1,13 @@
+#menu-background-image {
+  background-image: url('/menu.jpg');
+  background-position: center 40%;
+  background-size: 110vmax;
+  height: 100%;
+  left: 0px;
+  opacity: 0.3;
+  position: absolute;
+  top: 0px;
+  transition: opacity 800ms ease, background-size 800ms ease, background-position 800ms ease;
+  width: 100%;
+  z-index: 0;
+}
