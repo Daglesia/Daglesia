@@ -1,14 +1,62 @@
-.slide-enter-active {
-  transition: all 0.6s ease-out;
-}
-.slide-leave-active {
-  transition: all 0.6s ease-in;
-}
+@media only screen and (orientation: landscape) {
+  .slide-vertical-enter-active {
+    transition: all 0.6s ease-out;
+  }
+  .slide-vertical-leave-active {
+    transition: all 0.6s ease-in;
+  }
 
-.slide-enter-from {
-  top: 20vmin;
-}
+  .slide-vertical-enter-from {
+    top: 20vmin;
+  }
 
-.slide-leave-to {
-  top: -20vmin;
+  .slide-vertical-leave-to {
+    top: -20vmin;
+  }
+
+  .slide-horizontal-enter-active {
+    transition: all 1.6s ease-out;
+  }
+  .slide-horizontal-leave-active {
+    transition: all 1.6s ease-in;
+  }
+
+  .slide-horizontal-enter-from {
+    left: 20vmin;
+  }
+
+  .slide-horizontal-leave-to {
+    left: -20vmin;
+  }
+}
+@media only screen and (orientation: portrait) {
+  .slide-vertical-enter-active {
+    transition: all 1s ease-out;
+  }
+  .slide-vertical-leave-active {
+    transition: all 1s ease-in;
+  }
+
+  .slide-vertical-enter-from {
+    top: 100vmin;
+  }
+
+  .slide-vertical-leave-to {
+    top: -100vmin;
+  }
+
+  .slide-horizontal-enter-active {
+    transition: all 0.6s ease-out;
+  }
+  .slide-horizontal-leave-active {
+    transition: all 0.6s ease-in;
+  }
+
+  .slide-horizontal-enter-from {
+    left: 20vmin;
+  }
+
+  .slide-horizontal-leave-to {
+    left: -20vmin;
+  }
 }

@@ -1,26 +1,26 @@
 <template>
-    <p>
-        <slot></slot>
-    </p>
+  <p>
+    <slot></slot>
+  </p>
 </template>
 
-<style lang='scss' scoped>
-
+<style lang="scss" scoped>
 @keyframes background-pan {
   from {
     background-position: 0% center;
   }
-  
+
   to {
     background-position: -500% center;
   }
 }
 
 @keyframes scale {
-  from, to {
+  from,
+  to {
     transform: scale(0);
   }
-  
+
   50% {
     transform: scale(1);
   }
@@ -30,7 +30,7 @@
   from {
     transform: rotate(0deg);
   }
-  
+
   to {
     transform: rotate(180deg);
   }
@@ -47,7 +47,7 @@ body {
 
 h1 {
   color: white;
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: clamp(2em, 2vw, 4em);
   font-weight: 400;
   margin: 0px;
@@ -62,7 +62,7 @@ h1 > .magic {
 
 h1 > .magic > .magic-star {
   --size: clamp(20px, 1.5vw, 30px);
-  
+
   animation: scale 700ms ease forwards;
   display: block;
   height: var(--size);
@@ -83,18 +83,12 @@ h1 > .magic > .magic-star > svg > path {
 }
 
 p {
-    all: unset;
+  all: unset;
   animation: background-pan 20s linear infinite;
-  background: linear-gradient(
-    to right,
-    #FFFFFF,
-    #D99D55,
-    #FFFFFF,
-  );
+  background: linear-gradient(to right, #ffffff, #d99d55, #ffffff);
   background-size: 500%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   white-space: nowrap;
 }
-
 </style>

@@ -1,31 +1,46 @@
 <script setup lang="ts">
-import MenuButton from '@/components/MenuButton.vue';
+import MenuButton from '@/components/MenuButton.vue'
+import { ref } from 'vue'
+
+const p = ref(false)
 </script>
 
 <template>
-    <nav>
+  <nav>
+    <Transition name="slide-horizontal" appear>
+      <div>
         <a href="https://www.google.com/search?client=firefox-b-d&q=flex+gap">
-            <font-awesome-icon icon="fa-brands fa-linkedin"/>
+          <font-awesome-icon icon="fa-brands fa-linkedin" />
         </a>
         <a>
-            <font-awesome-icon icon="fa-solid fa-envelope" />
+          <font-awesome-icon icon="fa-solid fa-envelope" />
         </a>
-    </nav>
+      </div>
+    </Transition>
+  </nav>
 </template>
 
 <style lang="scss" scoped>
+@use '@/styles/transitions.scss';
+
 nav {
-    padding-block: 0.5em;
+  position: absolute;
+  right: 0.2em;
+  overflow: hidden;
+}
 
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.3em;
+div {
+  padding-block: 0.5em;
 
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 0.3em;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.3em;
 
-    position: absolute;
-    right: 0.2em;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.3em;
+
+  position: relative;
+  left: 0;
 }
 
 nav:hover > a {
@@ -37,14 +52,15 @@ nav:hover > a:hover {
 }
 
 a {
-    transition: all 0.5s ease;
-    margin: auto;
+  transition: all 0.5s ease;
+  margin: auto;
 }
 
-svg {margin-inline: 0.2em;
-    color: white;
-    font-size: 2em;
+svg {
+  margin-inline: 0.2em;
+  color: white;
+  font-size: 2em;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 </style>

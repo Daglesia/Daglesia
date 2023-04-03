@@ -15,7 +15,7 @@ defineProps({
 const emit = defineEmits(['onTransitionEnd'])
 
 const vVisible = {
-  updated(el, { value, oldValue }, { transition }) {
+  updated(el: HTMLStyleElement, { value, oldValue }: any, { transition }: any) {
     if (!value === !oldValue) {
       return
     }
@@ -35,10 +35,10 @@ const vVisible = {
 
 <template>
   <div>
-  <transition name="slide" @after-leave="emit('onTransitionEnd')" appear>
-    <span v-visible="isHidden" :style="delay"><slot></slot></span>
-  </transition>
-</div>
+    <transition name="slide-vertical" @after-leave="emit('onTransitionEnd')" appear>
+      <span v-visible="isHidden" :style="delay"><slot></slot></span>
+    </transition>
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -50,6 +50,6 @@ div {
 }
 span {
   position: relative;
-top: 0;
+  top: 0;
 }
 </style>

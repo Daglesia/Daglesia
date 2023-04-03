@@ -2,7 +2,7 @@
 import router from '@/router'
 import { useMenuStore } from '@/stores/menu'
 import { storeToRefs } from 'pinia'
-import { onMounted, ref } from 'vue'
+import { onBeforeMount, onMounted, ref } from 'vue'
 
 const menuStore = useMenuStore()
 const { menuHidden } = storeToRefs(menuStore)
@@ -14,12 +14,14 @@ const handleMouseover = (elementNumber: number): void => {
 }
 
 const handleMouseLeave = (): void => {
-  menuStore.setItemHovered(false)
+  if (itemClicked.value === '') {
+    menuStore.setItemHovered(false)
+  }
 }
 
 const handleMouseClick = (name: string): void => {
-  menuStore.setMenuHidden(true)
   itemClicked.value = name
+  menuStore.setMenuHidden(true)
 }
 
 const handleAnimationEnd = (index: number): void => {
@@ -37,24 +39,30 @@ const items = [
 onMounted(() => {
   menuStore.setMenuHidden(false)
 })
+
+onBeforeMount(() => {
+  menuStore.setActiveElement(0)
+  menuStore.setItemHovered(false)
+  itemClicked.value = ''
+})
 </script>
 
 <template>
   <main>
-  <ul>
-    <li
-      v-for="(item, index) in items"
-      :key="index"
-      @mouseover="handleMouseover(index)"
-      @mouseleave="handleMouseLeave()"
-      @click="handleMouseClick(item.href)"
-    >
-      <Transition name="slide" appear @after-leave="handleAnimationEnd(index)">
-        <p :style="`transition-delay: ${index * 100}ms;`" v-if="!menuHidden">{{ item.name }}</p>
-      </Transition>
-    </li>
-  </ul>
-</main>
+    <ul>
+      <li
+        v-for="(item, index) in items"
+        :key="index"
+        @mouseover="handleMouseover(index)"
+        @mouseleave="handleMouseLeave()"
+        @click="handleMouseClick(item.href)"
+      >
+        <Transition name="slide-vertical" appear @after-leave="handleAnimationEnd(index)">
+          <p :style="`transition-delay: ${index * 100}ms;`" v-if="!menuHidden">{{ item.name }}</p>
+        </Transition>
+      </li>
+    </ul>
+  </main>
 </template>
 
 <style scoped lang="scss">
