@@ -6,7 +6,7 @@ import ContactComponent from './components/ContactComponent.vue'
 </script>
 
 <template>
-  <div class="content">
+  <div id="content">
     <RouterView />
   </div>
   <contact-component />
@@ -15,14 +15,5 @@ import ContactComponent from './components/ContactComponent.vue'
 </template>
 
 <style scoped lang="scss">
-body {
-  background-color: black;
-}
-
-.content {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-}
+@use '@/styles/main.scss';
 </style>

@@ -1,18 +1,12 @@
 <script setup lang="ts">
 import { useMenuStore } from '@/stores/menu'
-import { onBeforeMount, onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
-import TransitionWrapper from './TransitionWrapper.vue'
 
 const store = useMenuStore()
 const handleMenuButtonClick = (): void => {
   store.setMenuHidden(false)
 }
 const { menuHidden } = storeToRefs(store)
-
-onBeforeMount(() => {
-  store.setMenuHidden(true)
-})
 </script>
 
 <template>
@@ -56,6 +50,6 @@ button {
 }
 
 button:hover > svg {
-  color: #d99d55;
+  color: var(--color-accent);
 }
 </style>
